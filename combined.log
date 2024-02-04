@@ -92,3 +92,5 @@
 {"level":"info","message":"connected to mongodb","service":"user-service"}
 {"level":"info","message":"app is listening at Port:8000.","service":"user-service"}
 {"level":"info","message":"connected to mongodb","service":"user-service"}
+{"level":"info","message":"app is listening at Port:8000.","service":"user-service"}
+{"level":"info","message":"connected to mongodb","service":"user-service"}

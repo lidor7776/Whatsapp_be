@@ -3,7 +3,7 @@ import { MessageModel } from "../models/index.js";
 export const createMessage = async (data) => {
   let newMessage = await MessageModel.create(data);
   if (!newMessage)
-    throw createHttpError.BadRequest("Oops...Something went wrong.");
+    throw createHttpError.BadRequest("Oops...Something went wrong !");
   return newMessage;
 };
 
@@ -16,7 +16,7 @@ export const populateMessage = async (id) => {
     })
     .populate({
       path: "conversation",
-      select: "name isGroup users",
+      select: "name picture isGroup users",
       model: "ConversationModel",
       populate: {
         path: "users",
@@ -24,15 +24,16 @@ export const populateMessage = async (id) => {
         model: "UserModel",
       },
     });
-  if (!msg) throw createHttpError.BadRequest("oops...Somethoing went wrong.");
+  if (!msg) throw createHttpError.BadRequest("Oops...Something went wrong !");
   return msg;
 };
+
 export const getConvoMessages = async (convo_id) => {
   const messages = await MessageModel.find({ conversation: convo_id })
     .populate("sender", "name picture email status")
     .populate("conversation");
   if (!messages) {
-    throw createHttpError.BadRequest("oops...Somethoing went wrong.");
+    throw createHttpError.BadRequest("Oops...Something went wrong !");
   }
   return messages;
 };
